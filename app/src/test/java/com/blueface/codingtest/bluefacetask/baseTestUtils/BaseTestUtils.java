@@ -10,6 +10,6 @@ import org.mockito.junit.MockitoJUnitRunner;
 public class BaseTestUtils {
 
     @Rule
-    InstantTaskExecutorRule instantTaskExecutorRule = new InstantTaskExecutorRule();
+    public InstantTaskExecutorRule instantTaskExecutorRule = new InstantTaskExecutorRule();
 
 }

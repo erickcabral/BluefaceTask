@@ -35,6 +35,9 @@ public class Test_1_Repository {
         } else if (!jsonData.contains("location")) {
             lvdError.postValue("Json data has no Location attribute");
             return;
+        }else if(!jsonData.contains("temperature")){
+            lvdError.postValue("Json data has no Temperature attribute");
+            return;
         }
         try {
             City city = this.gson.fromJson(jsonData, City.class);

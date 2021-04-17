@@ -1,5 +1,7 @@
 package com.blueface.codingtest.bluefacetask;
 
+import android.app.Dialog;
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -9,6 +11,8 @@ import androidx.lifecycle.ViewModelProvider;
 import com.blueface.codingtest.bluefacetask.supportClasses.OutputManager;
 import com.blueface.codingtest.bluefacetask.supportClasses.models.City;
 import com.blueface.codingtest.bluefacetask.supportClasses.models.JsonData;
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.GoogleApiAvailability;
 
 import dagger.hilt.android.AndroidEntryPoint;
 
@@ -16,6 +20,8 @@ import dagger.hilt.android.AndroidEntryPoint;
 public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "<<_ACT_MAIN_>>";
+    private static final int GOOGLE_SERVICE_ERROR = 1812;
+
 
     private MainViewModel vModel;
 
@@ -23,6 +29,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        this.isGoogleServicesReady(this);
 
         this.vModel = new ViewModelProvider(this).get(MainViewModel.class);
         this.initializeLiveData();
@@ -53,6 +61,24 @@ public class MainActivity extends AppCompatActivity {
                 OutputManager.logError(TAG, s);
             }
         });
+    }
+
+    public boolean isGoogleServicesReady(Context context) {
+        int isReady = GoogleApiAvailability.getInstance().isGooglePlayServicesAvailable(context);
+        if (isReady == ConnectionResult.SUCCESS) {
+            OutputManager.logInfo(TAG, "Google Services READY");
+            return true;
+        } else if (GoogleApiAvailability.getInstance().isUserResolvableError(isReady)) {
+            OutputManager.logWarning(TAG, "Google Services READY");
+            Dialog dialog = GoogleApiAvailability.getInstance().getErrorDialog(this, isReady, GOOGLE_SERVICE_ERROR);
+            dialog.show();
+
+        } else {
+            OutputManager.logError(TAG, "Your device is not able to use this app");
+            throw new RuntimeException("GOOGLE SERVICE IS NOT AVAILABLE FOR THIS DEVICE");
+        }
+
+        return false;
     }
 
 }

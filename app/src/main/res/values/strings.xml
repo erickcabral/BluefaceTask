@@ -9,4 +9,8 @@
     <string name="warning_invalid_field">Invalid Field</string>
     <string name="label_rank">City Rank</string>
     <string name="label_name">City Name</string>
+    <string name="label_country">Current Device Country</string>
+    <string name="label_location">Device Location</string>
+    <string name="label_latitude">Device Latitude</string>
+    <string name="label_longitude">Device Longitude</string>
 </resources>

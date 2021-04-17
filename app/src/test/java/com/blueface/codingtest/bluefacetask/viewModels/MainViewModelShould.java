@@ -1,10 +1,13 @@
 package com.blueface.codingtest.bluefacetask.viewModels;
 
+import android.content.Context;
+
 import com.blueface.codingtest.bluefacetask.MainViewModel;
 import com.blueface.codingtest.bluefacetask.baseTestUtils.BaseTestUtils;
 import com.blueface.codingtest.bluefacetask.supportClasses.models.City;
 import com.blueface.codingtest.bluefacetask.supportClasses.models.JsonData;
 import com.blueface.codingtest.bluefacetask.supportClasses.repositories.Test_1_Repository;
+import com.google.android.gms.common.GoogleApiAvailability;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -22,6 +25,12 @@ public class MainViewModelShould extends BaseTestUtils {
 
     @Mock
     private Test_1_Repository mckdTest_1_repository;
+
+    @Mock
+    private Context context;
+
+    @Mock
+    private GoogleApiAvailability googleApiAvailability;
 
     private final String fixedJson = "{\n" +
             "\"name\": \"Paris\",\n" +
@@ -67,8 +76,9 @@ public class MainViewModelShould extends BaseTestUtils {
     }
 
     @Test
-    public void get_error_live_data_when_json_is_invalid(){
+    public void get_error_live_data_when_json_is_invalid() {
         this.viewModel.getLvdError();
         verify(this.mckdTest_1_repository, times(1)).getLvdError();
     }
+
 }

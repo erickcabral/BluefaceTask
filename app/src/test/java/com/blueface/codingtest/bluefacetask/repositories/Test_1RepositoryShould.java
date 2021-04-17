@@ -2,6 +2,7 @@ package com.blueface.codingtest.bluefacetask.repositories;
 
 import com.blueface.codingtest.bluefacetask.baseTestUtils.BaseTestUtils;
 import com.blueface.codingtest.bluefacetask.supportClasses.models.City;
+import com.blueface.codingtest.bluefacetask.supportClasses.models.JsonData;
 import com.blueface.codingtest.bluefacetask.supportClasses.repositories.Test_1_Repository;
 import com.google.gson.Gson;
 
@@ -20,18 +21,22 @@ public class Test_1RepositoryShould extends BaseTestUtils {
 
     private Test_1_Repository repository;
 
-    private final String jsonString = "{\"city\": {\n" +
+    private final String defaultJson = JsonData.paris;
+    private final String validJson = JsonData.parisWithTemp;
+
+    private final String fixedJson = "{\n" +
             "\"name\": \"Paris\",\n" +
             "\"rank\": 7,\n" +
             "\"location\": {\"lat\": 48.8588376, \"lon\": 2.2768491}\n" +
-            "}\n" +
+            "}";
+    private final String fixedJsonWithTemperature = "{\n" +
+            "\"name\": \"Paris\",\n" +
+            "\"rank\": 7,\n" +
+            "\"temperature\": 22.3,\n" +
+            "\"location\": {\"lat\": 48.8588376, \"lon\": 2.2768491}\n" +
             "}";
 
-    private final String validJson = "{\n" +
-            "\"name\": \"Paris\",\n" +
-            "\"rank\": 7,\n" +
-            "\"location\": {\"lat\": 48.8588376, \"lon\": 2.2768491}\n" +
-            "}";
+
 
     private final String invalidCityJson = "{\n" +
             "\"\": \"\",\n" +
@@ -52,11 +57,6 @@ public class Test_1RepositoryShould extends BaseTestUtils {
 
     private final City city = new City();
 
-    public Test_1RepositoryShould() {
-        city.name = "Paris";
-        city.rank = 7;
-        city.temperature = 34.5f;
-    }
 
     @Mock
     private Gson gson;
@@ -68,18 +68,21 @@ public class Test_1RepositoryShould extends BaseTestUtils {
 
     @Test
     public void fix_given_jsonData_and_return_string() {
-        String fixedString = this.repository.getFixedJson(jsonString);
+        String fixedString = this.repository.getFixedJson(defaultJson);
         assertNotNull(fixedString);
-        assertEquals(validJson, fixedString);
+        assertEquals(fixedJson, fixedString);
     }
 
     @Test
     public void convert_json_data_and_update_city_live_data() {
+        city.name = "Paris";
+        city.rank = 7;
+        city.temperature = 34.5f;
 
-        when(gson.fromJson(validJson, City.class)).thenReturn(city);
+        when(gson.fromJson(fixedJsonWithTemperature, City.class)).thenReturn(city);
 
-        this.repository.convertJsonData(validJson);
-        verify(gson, times(1)).fromJson(validJson, City.class);
+        this.repository.convertJsonData(fixedJsonWithTemperature);
+        verify(gson, times(1)).fromJson(fixedJsonWithTemperature, City.class);
 
         City city = this.repository.getLvdCity().getValue();
         assertNotNull(city);
@@ -125,7 +128,10 @@ public class Test_1RepositoryShould extends BaseTestUtils {
 
     @Test
     public void convert_json_and_return_invalid_json_error_live_data_when_name_null() {
-        this.city.name = null;
+        city.name = null;
+        city.rank = 7;
+        city.temperature = 34.5f;
+
         when(gson.fromJson(validJson, City.class)).thenReturn(this.city);
         this.repository.convertJsonData(validJson);
 
@@ -139,7 +145,10 @@ public class Test_1RepositoryShould extends BaseTestUtils {
 
     @Test
     public void convert_json_and_return_error_live_data_when_name_null() {
-        this.city.name = "";
+        city.name = "";
+        city.rank = 7;
+        city.temperature = 34.5f;
+
         when(gson.fromJson(validJson, City.class)).thenReturn(this.city);
         this.repository.convertJsonData(validJson);
 

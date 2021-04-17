@@ -30,6 +30,8 @@ public class ViewTest2Features extends MainActivityScenarioRule {
         performActionOnView(withId(R.id.btnSubmit), click());
 
         assertDisplayed(R.id.linCityInfo);
+
+
     }
 
 }

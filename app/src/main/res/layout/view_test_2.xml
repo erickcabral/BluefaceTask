@@ -1,28 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:binder="http://schemas.android.com/apk/res-auto">
 
     <data>
 
         <variable
-            name="nameBinderModel"
+            name="contNameBinderModel"
             type="com.blueface.codingtest.bluefacetask.supportClasses.ContCityInfoBinderModel" />
 
         <variable
-            name="rankBinderModel"
+            name="contRankBinderModel"
             type="com.blueface.codingtest.bluefacetask.supportClasses.ContCityInfoBinderModel" />
 
         <variable
-            name="tempBinderModel"
+            name="contTempBinderModel"
             type="com.blueface.codingtest.bluefacetask.supportClasses.ContCityInfoBinderModel" />
 
         <variable
-            name="latBinderModel"
+            name="contLatBinderModel"
             type="com.blueface.codingtest.bluefacetask.supportClasses.ContCityInfoBinderModel" />
 
         <variable
-            name="longBinderModel"
+            name="contLongBinderModel"
             type="com.blueface.codingtest.bluefacetask.supportClasses.ContCityInfoBinderModel" />
 
     </data>
@@ -48,6 +49,7 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edCityName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="text" />
@@ -70,13 +72,14 @@
             app:layout_constraintTop_toBottomOf="@+id/inpCityName">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edCityRank"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="number" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/materialButton"
+            android:id="@+id/btnSubmit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
@@ -94,10 +97,12 @@
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="8dp"
             android:orientation="vertical"
+            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/materialButton">
+            app:layout_constraintTop_toBottomOf="@+id/btnSubmit"
+            tools:visibility="visible">
 
             <include
                 android:id="@+id/inclName"
@@ -105,7 +110,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                binder:binderModel="@{nameBinderModel}" />
+                binder:binderModel="@{contNameBinderModel}" />
 
             <include
                 android:id="@+id/inclRank"
@@ -113,7 +118,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                binder:binderModel="@{rankBinderModel}" />
+                binder:binderModel="@{contRankBinderModel}" />
 
             <include
                 android:id="@+id/inclTemp"
@@ -121,7 +126,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                binder:binderModel="@{tempBinderModel}" />
+                binder:binderModel="@{contTempBinderModel}" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:layout_width="match_parent"
@@ -143,7 +148,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="16dp"
                     android:layout_marginTop="8dp"
-                    binder:binderModel="@{latBinderModel}" />
+                    binder:binderModel="@{contLatBinderModel}" />
 
                 <include
                     android:id="@+id/inclLong"
@@ -152,7 +157,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="16dp"
                     android:layout_marginTop="8dp"
-                    binder:binderModel="@{longBinderModel}" />
+                    binder:binderModel="@{contLongBinderModel}" />
             </LinearLayout>
 
         </LinearLayout>

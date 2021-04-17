@@ -4,8 +4,9 @@ public class ContCityInfoBinderModel {
     private final String label;
     private String info;
 
-    public ContCityInfoBinderModel(String label) {
+    public ContCityInfoBinderModel(String label, String info) {
         this.label = label;
+        this.info = info;
     }
 
 

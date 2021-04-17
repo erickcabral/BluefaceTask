@@ -6,4 +6,7 @@
     <string name="hint_city_name">City Name</string>
     <string name="btn_submit">Submit</string>
     <string name="txt_current_location">Device Current Location</string>
+    <string name="warning_invalid_field">Invalid Field</string>
+    <string name="label_rank">City Rank</string>
+    <string name="label_name">City Name</string>
 </resources>

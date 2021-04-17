@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_main"
+    app:startDestination="@id/test2View">
+
+    <fragment
+        tools:layout="@layout/view_test_2"
+        android:id="@+id/test2View"
+        android:name="com.blueface.codingtest.bluefacetask.fragView.Test2View"
+        android:label="Test2View" />
+</navigation>

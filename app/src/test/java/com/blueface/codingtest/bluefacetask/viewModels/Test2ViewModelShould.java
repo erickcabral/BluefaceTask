@@ -14,7 +14,6 @@ import org.mockito.Mock;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
-import static org.mockito.Mockito.when;
 
 public class Test2ViewModelShould extends BaseTestUtils {
 
@@ -63,23 +62,30 @@ public class Test2ViewModelShould extends BaseTestUtils {
     public void create_city_object_and_update_city_live_data_address_live_data() {
         String name = "Paris";
         String rank = "7";
-        when(address.getCountryName()).thenReturn("Ireland");
-        when(address.getAdminArea()).thenReturn("Dublin");
-        when(address.getLatitude()).thenReturn(12.8998);
-        when(address.getLongitude()).thenReturn(32.32112);
-
-        this.viewModel.createCityObject(name, rank, address);
+        this.viewModel.createCityObject(name, rank);
 
         City city = this.viewModel.getLvdCity().getValue();
         assertEquals("Paris", city.name);
         assertEquals(7, city.rank);
+    }
 
-        Address deviceAddress = this.viewModel.getLvdDeviceAddress().getValue();
+    @Test
+    public void set_device_location() {
+        String location = "Place - Country";
+        String latitude = "12.00009";
+        String longitude = "-32.9999";
 
-        assertEquals("Ireland", deviceAddress.getCountryName());
-        assertEquals("Dublin", deviceAddress.getAdminArea());
-        assertEquals(12.8998, deviceAddress.getLatitude(), 0);
-        assertEquals(32.32112, deviceAddress.getLongitude(), 0);
+        this.viewModel.setDeviceLocation(location, latitude, longitude);
+        String liveLocation = this.viewModel.getLvdDeviceLocation().getValue();
+        assertEquals(location, liveLocation);
+
+        ContCityInfoBinderModel liveLatitude = this.viewModel.getLvdContLatitude().getValue();
+        assertEquals("Latitude", liveLatitude.getLabel());
+        assertEquals(latitude, liveLatitude.getInfo());
+
+        ContCityInfoBinderModel liveLongitude = this.viewModel.getLvdContLongitude().getValue();
+        assertEquals("Longitude", liveLongitude.getLabel());
+        assertEquals(longitude, liveLongitude.getInfo());
     }
 
     @Test
@@ -105,37 +111,16 @@ public class Test2ViewModelShould extends BaseTestUtils {
     }
 
     @Test
-    public void set_container_device_country_binder_model() {
-        String label = "Country";
-        String info = "Ireland";
-
-        this.viewModel.setContCountryBinderModel(label, info);
-        ContCityInfoBinderModel value = this.viewModel.getLvdContCountry().getValue();
-        assertEquals("Country", value.getLabel());
-        assertEquals("Ireland", value.getInfo());
-    }
-
-    @Test
-    public void set_container_device_location_binder_model() {
-        String label = "Location";
-        String info = "Dublin";
-
-        this.viewModel.setContDeviceLocation(label, info);
-        ContCityInfoBinderModel value = this.viewModel.getLvdLocation().getValue();
-        assertEquals("Location", value.getLabel());
-        assertEquals("Dublin", value.getInfo());
-    }
-
-    @Test
     public void set_container_device_latitude_binder_model() {
         String label = "Latitude";
         String info = "12.4223423";
 
-        this.viewModel.setContLatitudeBinderModel(label,info);
+        this.viewModel.setContLatitudeBinderModel(label, info);
         ContCityInfoBinderModel value = this.viewModel.getLvdContLatitude().getValue();
         assertEquals("Latitude", value.getLabel());
         assertEquals("12.4223423", value.getInfo());
     }
+
     @Test
     public void set_container_device_longitude_binder_model() {
         String label = "Longitude";

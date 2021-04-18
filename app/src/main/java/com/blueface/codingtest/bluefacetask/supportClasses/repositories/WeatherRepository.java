@@ -23,4 +23,8 @@ public class WeatherRepository {
     public LiveData<City> getLvdWeatherResponse() {
         return this.service.getWeatherResponse();
     }
+
+    public void clear() {
+        service.clear();
+    }
 }

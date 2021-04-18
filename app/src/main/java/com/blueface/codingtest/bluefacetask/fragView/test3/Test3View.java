@@ -92,4 +92,11 @@ public class Test3View extends Fragment {
             inputLayout.setError(getResources().getString(R.string.warning_invalid_field));
         }
     }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+
+        this.vModel.clearComp();
+    }
 }

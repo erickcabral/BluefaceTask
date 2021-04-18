@@ -37,4 +37,8 @@ public class Test3ViewModel extends ViewModel {
     public LiveData<Boolean> getLvdProgress() {
         return this.lvdProgress;
     }
+
+    public void clearComp() {
+        this.weatherRepository.clear();
+    }
 }

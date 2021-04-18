@@ -6,25 +6,35 @@
 
     <data>
 
-        <variable
-            name="contNameBinderModel"
-            type="com.blueface.codingtest.bluefacetask.supportClasses.ContCityInfoBinderModel" />
+        <import type="android.view.View" />
+
+        <!--        <variable-->
+        <!--            name="contNameBinderModel"-->
+        <!--            type="com.blueface.codingtest.bluefacetask.supportClasses.ContCityInfoBinderModel" />-->
+
+        <!--        <variable-->
+        <!--            name="contRankBinderModel"-->
+        <!--            type="com.blueface.codingtest.bluefacetask.supportClasses.ContCityInfoBinderModel" />-->
+
+        <!--        <variable-->
+        <!--            name="contTempBinderModel"-->
+        <!--            type="com.blueface.codingtest.bluefacetask.supportClasses.ContCityInfoBinderModel" />-->
+
+        <!--        <variable-->
+        <!--            name="contDeviceCountryBinderModel"-->
+        <!--            type="com.blueface.codingtest.bluefacetask.supportClasses.ContCityInfoBinderModel" />-->
+
+        <!--        <variable-->
+        <!--            name="contDeviceLocationBinderModel"-->
+        <!--            type="com.blueface.codingtest.bluefacetask.supportClasses.ContCityInfoBinderModel" />-->
 
         <variable
-            name="contRankBinderModel"
-            type="com.blueface.codingtest.bluefacetask.supportClasses.ContCityInfoBinderModel" />
+            name="city"
+            type="com.blueface.codingtest.bluefacetask.supportClasses.models.City" />
 
         <variable
-            name="contTempBinderModel"
-            type="com.blueface.codingtest.bluefacetask.supportClasses.ContCityInfoBinderModel" />
-
-        <variable
-            name="contDeviceCountryBinderModel"
-            type="com.blueface.codingtest.bluefacetask.supportClasses.ContCityInfoBinderModel" />
-
-        <variable
-            name="contDeviceLocationBinderModel"
-            type="com.blueface.codingtest.bluefacetask.supportClasses.ContCityInfoBinderModel" />
+            name="deviceLocation"
+            type="String" />
 
         <variable
             name="contLatBinderModel"
@@ -97,98 +107,240 @@
             app:layout_constraintTop_toBottomOf="@+id/inpCityRank" />
 
         <LinearLayout
-            android:id="@+id/linCityInfo"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginBottom="8dp"
+            android:id="@+id/linearLayout6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
             android:orientation="vertical"
-            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnSubmit">
+
+            <LinearLayout
+                android:id="@+id/linearLayout5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:orientation="horizontal"
+                android:visibility="@{city!=null?View.VISIBLE:View.GONE}"
+                android:weightSum="10">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="4dp"
+                    android:layout_weight="7"
+                    android:hint="City"
+                    app:startIconDrawable="@drawable/ic_city">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:editable="false"
+                        android:text="@{city.name}"
+                        tools:text="Paris" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:layout_weight="3"
+                    android:hint="Rank"
+                    app:startIconDrawable="@drawable/ic_rank">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text='@{String.format("%d",city.rank)}'
+                        tools:text="99" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="4dp"
+                    android:layout_weight="3"
+                    android:hint="Temp."
+                    android:visibility="gone"
+                    app:startIconDrawable="@drawable/ic_temp"
+                    app:suffixText="C"
+                    app:suffixTextColor="@color/design_default_color_primary">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:editable="false"
+                        android:text='@{String.format("%.1f",city.temperature)}'
+                        tools:text="34" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="@{deviceLocation!=null?View.VISIBLE:View.GONE}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btnSubmit"
-            tools:visibility="visible">
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout6">
 
-            <include
-                android:id="@+id/inclName"
-                layout="@layout/cont_city_info"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputLayout"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                binder:binderModel="@{contNameBinderModel}" />
+                android:layout_margin="8dp"
+                android:hint="Device Current Location"
+                android:visibility="@{deviceLocation == null?View.GONE:View.VISIBLE}"
+                binder:startIconDrawable="@drawable/ic_current_location">
 
-            <include
-                android:id="@+id/inclRank"
-                layout="@layout/cont_city_info"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                binder:binderModel="@{contRankBinderModel}" />
-
-            <include
-                android:id="@+id/inclTemp"
-                layout="@layout/cont_city_info"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                binder:binderModel="@{contTempBinderModel}" />
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:editable="false"
+                    android:text="@{deviceLocation}"
+                    tools:text="Dublin, Ireland" />
+            </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textview.MaterialTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
+                android:layout_margin="16dp"
                 android:gravity="center"
-                android:text="@string/txt_current_location" />
-
-
-            <include
-                android:id="@+id/inclDeviceCountry"
-                layout="@layout/cont_city_info"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="16dp"
-                android:layout_marginTop="8dp"
-                binder:binderModel="@{contDeviceCountryBinderModel}" />
-
-            <include
-                android:id="@+id/inclDeviceLocation"
-                layout="@layout/cont_city_info"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="16dp"
-                android:layout_marginTop="8dp"
-                binder:binderModel="@{contDeviceLocationBinderModel}" />
-
+                android:text="Device Position"
+                android:textSize="14sp"
+                android:textStyle="bold" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_margin="8dp"
                 android:gravity="center"
                 android:orientation="horizontal">
 
                 <include
                     android:id="@+id/inclLat"
                     layout="@layout/cont_city_info"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="16dp"
-                    android:layout_marginTop="8dp"
+                    android:layout_margin="8dp"
+                    android:layout_weight="1"
                     binder:binderModel="@{contLatBinderModel}" />
 
                 <include
                     android:id="@+id/inclLong"
                     layout="@layout/cont_city_info"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="16dp"
-                    android:layout_marginTop="8dp"
+                    android:layout_margin="8dp"
+                    android:layout_weight="1"
                     binder:binderModel="@{contLongBinderModel}" />
             </LinearLayout>
-
         </LinearLayout>
+
+        <!--        <LinearLayout-->
+        <!--            android:id="@+id/linCityInfo"-->
+        <!--            android:layout_width="0dp"-->
+        <!--            android:layout_height="0dp"-->
+        <!--            android:layout_marginStart="8dp"-->
+        <!--            android:layout_marginTop="16dp"-->
+        <!--            android:layout_marginEnd="8dp"-->
+        <!--            android:layout_marginBottom="8dp"-->
+        <!--            android:orientation="vertical"-->
+        <!--            android:visibility="gone"-->
+        <!--            app:layout_constraintBottom_toBottomOf="parent"-->
+        <!--            app:layout_constraintEnd_toEndOf="parent"-->
+        <!--            app:layout_constraintStart_toStartOf="parent"-->
+        <!--            app:layout_constraintTop_toBottomOf="@+id/btnSubmit">-->
+
+        <!--            <include-->
+        <!--                android:id="@+id/inclName"-->
+        <!--                layout="@layout/cont_city_info"-->
+        <!--                android:layout_width="match_parent"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:layout_marginTop="8dp"-->
+        <!--                binder:binderModel="@{contNameBinderModel}" />-->
+
+        <!--            <include-->
+        <!--                android:id="@+id/inclRank"-->
+        <!--                layout="@layout/cont_city_info"-->
+        <!--                android:layout_width="match_parent"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:layout_marginTop="8dp"-->
+        <!--                binder:binderModel="@{contRankBinderModel}" />-->
+
+        <!--            <include-->
+        <!--                android:id="@+id/inclTemp"-->
+        <!--                layout="@layout/cont_city_info"-->
+        <!--                android:layout_width="match_parent"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:layout_marginTop="8dp"-->
+        <!--                binder:binderModel="@{contTempBinderModel}" />-->
+
+        <!--            <com.google.android.material.textview.MaterialTextView-->
+        <!--                android:layout_width="match_parent"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:layout_marginTop="8dp"-->
+        <!--                android:gravity="center"-->
+        <!--                android:text="@string/txt_current_location" />-->
+
+
+        <!--            <include-->
+        <!--                android:id="@+id/inclDeviceCountry"-->
+        <!--                layout="@layout/cont_city_info"-->
+        <!--                android:layout_width="wrap_content"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:layout_marginHorizontal="16dp"-->
+        <!--                android:layout_marginTop="8dp"-->
+        <!--                binder:binderModel="@{contDeviceCountryBinderModel}" />-->
+
+        <!--            <include-->
+        <!--                android:id="@+id/inclDeviceLocation"-->
+        <!--                layout="@layout/cont_city_info"-->
+        <!--                android:layout_width="wrap_content"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:layout_marginHorizontal="16dp"-->
+        <!--                android:layout_marginTop="8dp"-->
+        <!--                binder:binderModel="@{contDeviceLocationBinderModel}" />-->
+
+
+        <!--            <LinearLayout-->
+        <!--                android:layout_width="match_parent"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:gravity="center"-->
+        <!--                android:orientation="horizontal">-->
+
+        <!--                <include-->
+        <!--                    android:id="@+id/inclLat"-->
+        <!--                    layout="@layout/cont_city_info"-->
+        <!--                    android:layout_width="wrap_content"-->
+        <!--                    android:layout_height="wrap_content"-->
+        <!--                    android:layout_marginHorizontal="16dp"-->
+        <!--                    android:layout_marginTop="8dp"-->
+        <!--                    binder:binderModel="@{contLatBinderModel}" />-->
+
+        <!--                <include-->
+        <!--                    android:id="@+id/inclLong"-->
+        <!--                    layout="@layout/cont_city_info"-->
+        <!--                    android:layout_width="wrap_content"-->
+        <!--                    android:layout_height="wrap_content"-->
+        <!--                    android:layout_marginHorizontal="16dp"-->
+        <!--                    android:layout_marginTop="8dp"-->
+        <!--                    binder:binderModel="@{contLongBinderModel}" />-->
+        <!--            </LinearLayout>-->
+
+        <!--        </LinearLayout>-->
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

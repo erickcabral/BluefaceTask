@@ -39,7 +39,7 @@ public class WeatherService {
 
 
     public void requestWeather(String city) {
-        Observable<WeatherResponse> response = this.weatherAPI.getWeather(city, api_key,WeatherAPI.METRIC);
+        Observable<WeatherResponse> response = this.weatherAPI.getWeather(city, api_key, WeatherAPI.METRIC);
 
         this.compositeDisposable.add(response.subscribeOn(Schedulers.io())
                 .delay(200, TimeUnit.MILLISECONDS)
@@ -74,5 +74,9 @@ public class WeatherService {
 
     public LiveData<City> getWeatherResponse() {
         return this.lvdCityWeatherResponse;
+    }
+
+    public void clear() {
+        this.compositeDisposable.clear();
     }
 }

@@ -1,7 +1,5 @@
 package com.blueface.codingtest.bluefacetask.fragView.test2;
 
-import android.location.Address;
-
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
@@ -16,7 +14,6 @@ import dagger.hilt.android.lifecycle.HiltViewModel;
 @HiltViewModel
 public class Test2ViewModel extends ViewModel {
 
-    private final MutableLiveData<Address> lvdAddress = new MutableLiveData<>();
     private final MutableLiveData<City> lvdCity = new MutableLiveData<>();
     private final MutableLiveData<Boolean> lvdIsAttributeValid = new MutableLiveData<>();
 
@@ -26,20 +23,20 @@ public class Test2ViewModel extends ViewModel {
     private final MutableLiveData<ContCityInfoBinderModel> lvdConLongitude = new MutableLiveData<>();
     private final MutableLiveData<ContCityInfoBinderModel> lvdConLatitude = new MutableLiveData<>();
     private final MutableLiveData<ContCityInfoBinderModel> lvdConCountry = new MutableLiveData<>();
-    private final MutableLiveData<ContCityInfoBinderModel> lvdConLocation = new MutableLiveData<>();
+    private final MutableLiveData<String> lvdDeviceLocation = new MutableLiveData<>();
 
     @Inject
     public Test2ViewModel() {
 
     }
 
-    public void createCityObject(String name, String rank, Address address) {
+    public void createCityObject(String name, String rank) {
         City city = new City();
         city.name = name;
         city.rank = Integer.parseInt(rank);
         this.lvdCity.postValue(city);
-        this.lvdAddress.postValue(address);
     }
+
 
     public LiveData<City> getLvdCity() {
         return this.lvdCity;
@@ -75,12 +72,10 @@ public class Test2ViewModel extends ViewModel {
         this.lvdConLatitude.postValue(new ContCityInfoBinderModel(label, info));
     }
 
-    public void setContDeviceLocation(String label, String info) {
-        this.lvdConLocation.postValue(new ContCityInfoBinderModel(label, info));
-    }
-
-    public void setContCountryBinderModel(String label, String info) {
-        this.lvdConCountry.postValue(new ContCityInfoBinderModel(label,info));
+    public void setDeviceLocation(String location, String latitude, String longitude) {
+        this.lvdDeviceLocation.postValue(location);
+        this.lvdConLatitude.postValue(new ContCityInfoBinderModel("Latitude", latitude));
+        this.lvdConLongitude.postValue(new ContCityInfoBinderModel("Longitude", longitude));
     }
 
     // ============== GETTERS ================ //
@@ -92,12 +87,6 @@ public class Test2ViewModel extends ViewModel {
         return this.lvdContRankBinderModel;
     }
 
-
-    public LiveData<Address> getLvdDeviceAddress() {
-        return this.lvdAddress;
-    }
-
-
     public LiveData<ContCityInfoBinderModel> getLvdContLongitude() {
         return this.lvdConLongitude;
     }
@@ -107,11 +96,8 @@ public class Test2ViewModel extends ViewModel {
         return this.lvdConLatitude;
     }
 
-    public LiveData<ContCityInfoBinderModel> getLvdLocation() {
-        return this.lvdConLocation;
+    public LiveData<String> getLvdDeviceLocation() {
+        return this.lvdDeviceLocation;
     }
 
-    public LiveData<ContCityInfoBinderModel> getLvdContCountry() {
-        return this.lvdConCountry;
-    }
 }

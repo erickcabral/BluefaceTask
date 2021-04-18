@@ -18,4 +18,11 @@
     <string name="btn_test_2">TEST 2</string>
     <string name="btn_test_3">TEST 3</string>
     <string name="btn_request_info">Get Temperature</string>
+    <string name="log_city_name">City Name: %s</string>
+    <string name="log_city_rank">City Rank: %d</string>
+    <string name="log_city_temp">City Temperature: %.1f</string>
+
+    <string name="dialog_city_info">City Name: %s\n</string>
+    <string name="dialog_city_rank">City Rank: %d\n</string>
+    <string name="dialog_city_temp">City Temperature: %.1f</string>
 </resources>

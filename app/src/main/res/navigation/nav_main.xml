@@ -4,7 +4,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_main"
     app:startDestination="@id/test1View">
-
+    <fragment
+        android:id="@+id/test1View"
+        android:name="com.blueface.codingtest.bluefacetask.fragView.test1.Test1View"
+        android:label="Test 1"
+        tools:layout="@layout/view_test_1">
+        <action
+            android:id="@+id/toTest2"
+            app:destination="@id/test2View" />
+        <action
+            android:id="@+id/toTest3"
+            app:destination="@id/test3View" />
+    </fragment>
     <fragment
         android:id="@+id/test2View"
         android:name="com.blueface.codingtest.bluefacetask.fragView.test2.Test2View"
@@ -13,16 +24,7 @@
     <fragment
         android:id="@+id/test3View"
         android:name="com.blueface.codingtest.bluefacetask.fragView.test3.Test3View"
-        android:label="Test 3" />
-    <fragment
-        android:id="@+id/test1View"
-        android:name="com.blueface.codingtest.bluefacetask.fragView.test1.Test1View"
-        android:label="Test 1">
-        <action
-            android:id="@+id/toTest2"
-            app:destination="@id/test2View" />
-        <action
-            android:id="@+id/toTest3"
-            app:destination="@id/test3View" />
-    </fragment>
+        android:label="Test 3"
+        tools:layout="@layout/view_test_3" />
+
 </navigation>

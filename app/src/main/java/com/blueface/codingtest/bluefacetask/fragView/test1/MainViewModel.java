@@ -1,4 +1,4 @@
-package com.blueface.codingtest.bluefacetask.activities;
+package com.blueface.codingtest.bluefacetask.fragView.test1;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModel;

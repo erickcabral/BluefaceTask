@@ -1,6 +1,9 @@
 package com.blueface.codingtest.bluefacetask.supportClasses;
 
+import android.content.Context;
 import android.util.Log;
+
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 public class OutputManager {
     private static boolean logEnable = true;
@@ -25,5 +28,15 @@ public class OutputManager {
         if (logEnable) {
             Log.w(tag, message);
         }
+    }
+
+
+    public static void displayDialog(Context context, String title, String message) {
+        new MaterialAlertDialogBuilder(context)
+                .setTitle(title)
+                .setMessage(message)
+                .setCancelable(true)
+                .create()
+                .show();
     }
 }

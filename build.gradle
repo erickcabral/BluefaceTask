@@ -4,10 +4,11 @@ buildscript {
         google()
         jcenter()
         mavenCentral()
+        maven { url "https://oss.jfrog.org/libs-snapshot" }
     }
 
     ext.hilt_version = '2.33-beta'
-    ext.nav_version = "2.3.4"
+    ext.nav_version = '2.3.5'
 
     dependencies {
         classpath "com.android.tools.build:gradle:4.1.3"

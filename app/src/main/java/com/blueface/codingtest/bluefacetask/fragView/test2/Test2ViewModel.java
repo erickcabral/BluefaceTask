@@ -1,4 +1,4 @@
-package com.blueface.codingtest.bluefacetask.fragView;
+package com.blueface.codingtest.bluefacetask.fragView.test2;
 
 import android.location.Address;
 

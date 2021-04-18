@@ -3,11 +3,26 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_main"
-    app:startDestination="@id/test2View">
+    app:startDestination="@id/test1View">
 
     <fragment
-        tools:layout="@layout/view_test_2"
         android:id="@+id/test2View"
-        android:name="com.blueface.codingtest.bluefacetask.fragView.Test2View"
-        android:label="Test2View" />
+        android:name="com.blueface.codingtest.bluefacetask.fragView.test2.Test2View"
+        android:label="Test 2"
+        tools:layout="@layout/view_test_2" />
+    <fragment
+        android:id="@+id/test3View"
+        android:name="com.blueface.codingtest.bluefacetask.fragView.test3.Test3View"
+        android:label="Test 3" />
+    <fragment
+        android:id="@+id/test1View"
+        android:name="com.blueface.codingtest.bluefacetask.fragView.test1.Test1View"
+        android:label="Test 1">
+        <action
+            android:id="@+id/toTest2"
+            app:destination="@id/test2View" />
+        <action
+            android:id="@+id/toTest3"
+            app:destination="@id/test3View" />
+    </fragment>
 </navigation>

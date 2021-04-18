@@ -3,7 +3,7 @@ package com.blueface.codingtest.bluefacetask.viewModels;
 import android.location.Address;
 
 import com.blueface.codingtest.bluefacetask.baseTestUtils.BaseTestUtils;
-import com.blueface.codingtest.bluefacetask.fragView.Test2ViewModel;
+import com.blueface.codingtest.bluefacetask.fragView.test2.Test2ViewModel;
 import com.blueface.codingtest.bluefacetask.supportClasses.ContCityInfoBinderModel;
 import com.blueface.codingtest.bluefacetask.supportClasses.models.City;
 

@@ -25,6 +25,8 @@
             android:layout_height="wrap_content"
             android:tag="@{binderModel.label}"
             android:text="@{binderModel.label}"
+            android:textSize="14sp"
+            android:textStyle="bold"
             tools:text="Label" />
 
         <com.google.android.material.textview.MaterialTextView

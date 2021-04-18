@@ -2,7 +2,7 @@ package com.blueface.codingtest.bluefacetask.androidTestUtils;
 
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
 
-import com.blueface.codingtest.bluefacetask.MainActivity;
+import com.blueface.codingtest.bluefacetask.activities.MainActivity;
 
 import org.junit.Rule;
 

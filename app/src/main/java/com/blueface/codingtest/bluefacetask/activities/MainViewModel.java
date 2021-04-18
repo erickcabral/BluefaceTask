@@ -1,4 +1,4 @@
-package com.blueface.codingtest.bluefacetask;
+package com.blueface.codingtest.bluefacetask.activities;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModel;

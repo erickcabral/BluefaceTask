@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">Blueface Task</string>
+    <string name="api_key">bec2ea2f434c848c09196f2de96e3c4c</string>
+    <string name="base_url">http://api.openweathermap.org/data/2.5/</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="hint_city_rank">City Rank</string>
@@ -13,4 +15,7 @@
     <string name="label_location">Device Location</string>
     <string name="label_latitude">Device Latitude</string>
     <string name="label_longitude">Device Longitude</string>
+    <string name="btn_test_2">TEST 2</string>
+    <string name="btn_test_3">TEST 3</string>
+    <string name="btn_request_info">Get Temperature</string>
 </resources>

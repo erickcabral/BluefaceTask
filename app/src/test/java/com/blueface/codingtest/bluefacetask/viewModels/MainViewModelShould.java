@@ -2,7 +2,7 @@ package com.blueface.codingtest.bluefacetask.viewModels;
 
 import android.content.Context;
 
-import com.blueface.codingtest.bluefacetask.MainViewModel;
+import com.blueface.codingtest.bluefacetask.activities.MainViewModel;
 import com.blueface.codingtest.bluefacetask.baseTestUtils.BaseTestUtils;
 import com.blueface.codingtest.bluefacetask.supportClasses.models.City;
 import com.blueface.codingtest.bluefacetask.supportClasses.models.JsonData;

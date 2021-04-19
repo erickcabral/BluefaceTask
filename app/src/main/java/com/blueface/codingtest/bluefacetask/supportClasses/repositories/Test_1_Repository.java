@@ -35,7 +35,7 @@ public class Test_1_Repository {
         } else if (!jsonData.contains("location")) {
             lvdError.postValue("Json data has no Location attribute");
             return;
-        }else if(!jsonData.contains("temperature")){
+        } else if (!jsonData.contains("temperature")) {
             lvdError.postValue("Json data has no Temperature attribute");
             return;
         }
@@ -60,5 +60,10 @@ public class Test_1_Repository {
 
     public MutableLiveData<String> getLvdError() {
         return this.lvdError;
+    }
+
+    public void clearData() {
+        this.lvdError.postValue(null);
+        this.lvdCity.postValue(null);
     }
 }

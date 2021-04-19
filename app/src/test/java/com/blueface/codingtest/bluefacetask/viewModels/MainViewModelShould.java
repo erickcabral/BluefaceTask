@@ -3,7 +3,7 @@ package com.blueface.codingtest.bluefacetask.viewModels;
 import android.content.Context;
 
 import com.blueface.codingtest.bluefacetask.baseTestUtils.BaseTestUtils;
-import com.blueface.codingtest.bluefacetask.fragView.test1.MainViewModel;
+import com.blueface.codingtest.bluefacetask.fragView.test1.Test1ViewModel;
 import com.blueface.codingtest.bluefacetask.supportClasses.models.City;
 import com.blueface.codingtest.bluefacetask.supportClasses.models.JsonData;
 import com.blueface.codingtest.bluefacetask.supportClasses.repositories.Test_1_Repository;
@@ -21,7 +21,7 @@ import static org.mockito.Mockito.when;
 
 public class MainViewModelShould extends BaseTestUtils {
 
-    private MainViewModel viewModel;
+    private Test1ViewModel viewModel;
 
     @Mock
     private Test_1_Repository mckdTest_1_repository;
@@ -48,7 +48,7 @@ public class MainViewModelShould extends BaseTestUtils {
 
     @Before
     public void setup() {
-        this.viewModel = new MainViewModel(mckdTest_1_repository);
+        this.viewModel = new Test1ViewModel(mckdTest_1_repository);
     }
 
     @Test

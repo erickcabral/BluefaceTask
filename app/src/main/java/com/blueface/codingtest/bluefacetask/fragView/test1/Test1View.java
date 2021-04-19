@@ -26,13 +26,12 @@ public class Test1View extends Fragment implements View.OnClickListener {
     private static final String TAG = "<<_VIEW_TEST_1_>>";
 
     private ViewTest1Binding binding;
-    private MainViewModel vModel;
+    private Test1ViewModel vModel;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        this.vModel = new ViewModelProvider(this).get(MainViewModel.class);
-        this.initializeLiveData(getParentFragment());
+        this.vModel = new ViewModelProvider(this).get(Test1ViewModel.class);
     }
 
     @Nullable
@@ -45,6 +44,7 @@ public class Test1View extends Fragment implements View.OnClickListener {
         this.binding.btnTest2.setOnClickListener(this::onClick);
         this.binding.btnTest3.setOnClickListener(this::onClick);
 
+        initializeLiveData();
         return this.binding.getRoot();
     }
 
@@ -55,8 +55,8 @@ public class Test1View extends Fragment implements View.OnClickListener {
         this.vModel.convertData(fixedData);
     }
 
-    private void initializeLiveData(Fragment parent) {
-        this.vModel.getLvdCity().observe(parent, new Observer<City>() {
+    private void initializeLiveData() {
+        this.vModel.getLvdCity().observe(getViewLifecycleOwner(), new Observer<City>() {
             @Override
             public void onChanged(City city) {
                 if (city != null) {
@@ -72,15 +72,18 @@ public class Test1View extends Fragment implements View.OnClickListener {
                             city.temperature);
 
                     OutputManager.displayDialog(getContext(), "City Data:", message);
+                    vModel.getLvdCity().removeObserver(this);
                 }
             }
         });
 
-        this.vModel.getLvdError().observe(parent, new Observer<String>() {
+        this.vModel.getLvdError().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(String message) {
-                OutputManager.logError(TAG, message);
-                OutputManager.displayDialog(getContext(), "Something went wrong:", message);
+                if (message != null) {
+                    OutputManager.logError(TAG, message);
+                    OutputManager.displayDialog(getContext(), "Something went wrong:", message);
+                }
             }
         });
     }
@@ -106,7 +109,6 @@ public class Test1View extends Fragment implements View.OnClickListener {
                 this.vModel.convertData(givenDataWithTemperature);
                 break;
             }
-
         }
     }
 }

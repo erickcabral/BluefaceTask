@@ -75,17 +75,9 @@ public class Test2ViewModelShould extends BaseTestUtils {
         String latitude = "12.00009";
         String longitude = "-32.9999";
 
-        this.viewModel.setDeviceLocation(location, latitude, longitude);
+        this.viewModel.setDeviceLocation(location);
         String liveLocation = this.viewModel.getLvdDeviceLocation().getValue();
         assertEquals(location, liveLocation);
-
-        ContCityInfoBinderModel liveLatitude = this.viewModel.getLvdContLatitude().getValue();
-        assertEquals("Latitude", liveLatitude.getLabel());
-        assertEquals(latitude, liveLatitude.getInfo());
-
-        ContCityInfoBinderModel liveLongitude = this.viewModel.getLvdContLongitude().getValue();
-        assertEquals("Longitude", liveLongitude.getLabel());
-        assertEquals(longitude, liveLongitude.getInfo());
     }
 
     @Test

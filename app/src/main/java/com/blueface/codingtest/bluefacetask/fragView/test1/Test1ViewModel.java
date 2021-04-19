@@ -11,13 +11,13 @@ import javax.inject.Inject;
 import dagger.hilt.android.lifecycle.HiltViewModel;
 
 @HiltViewModel
-public class MainViewModel extends ViewModel {
+public class Test1ViewModel extends ViewModel {
     private static final String TAG = "<<_VM_MAIN_ACTIVITY_>>";
 
     private Test_1_Repository test_1_repository =null;
 
     @Inject
-    public MainViewModel(Test_1_Repository test_1_repository) {
+    public Test1ViewModel(Test_1_Repository test_1_repository) {
         this.test_1_repository = test_1_repository;
     }
 
@@ -37,4 +37,7 @@ public class MainViewModel extends ViewModel {
         return this.test_1_repository.getLvdError();
     }
 
+    public void clearCurrentData() {
+        this.test_1_repository.clearData();
+    }
 }

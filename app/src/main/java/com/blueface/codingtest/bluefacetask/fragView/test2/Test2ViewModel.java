@@ -14,16 +14,15 @@ import dagger.hilt.android.lifecycle.HiltViewModel;
 @HiltViewModel
 public class Test2ViewModel extends ViewModel {
 
-    private final MutableLiveData<City> lvdCity = new MutableLiveData<>();
     private final MutableLiveData<Boolean> lvdIsAttributeValid = new MutableLiveData<>();
 
+    private final MutableLiveData<City> lvdCity = new MutableLiveData<>();
     private final MutableLiveData<ContCityInfoBinderModel> lvdContNameBinderModel = new MutableLiveData<>();
     private final MutableLiveData<ContCityInfoBinderModel> lvdContRankBinderModel = new MutableLiveData<>();
 
+    private final MutableLiveData<String> lvdDeviceLocation = new MutableLiveData<>();
     private final MutableLiveData<ContCityInfoBinderModel> lvdConLongitude = new MutableLiveData<>();
     private final MutableLiveData<ContCityInfoBinderModel> lvdConLatitude = new MutableLiveData<>();
-    private final MutableLiveData<ContCityInfoBinderModel> lvdConCountry = new MutableLiveData<>();
-    private final MutableLiveData<String> lvdDeviceLocation = new MutableLiveData<>();
 
     @Inject
     public Test2ViewModel() {
@@ -72,10 +71,8 @@ public class Test2ViewModel extends ViewModel {
         this.lvdConLatitude.postValue(new ContCityInfoBinderModel(label, info));
     }
 
-    public void setDeviceLocation(String location, String latitude, String longitude) {
+    public void setDeviceLocation(String location) {
         this.lvdDeviceLocation.postValue(location);
-        this.lvdConLatitude.postValue(new ContCityInfoBinderModel("Latitude", latitude));
-        this.lvdConLongitude.postValue(new ContCityInfoBinderModel("Longitude", longitude));
     }
 
     // ============== GETTERS ================ //

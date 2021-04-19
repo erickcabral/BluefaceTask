@@ -21,10 +21,14 @@ public class WeatherRepository {
     }
 
     public LiveData<City> getLvdWeatherResponse() {
-        return this.service.getWeatherResponse();
+        return this.service.getLvdWeatherResponse();
     }
 
     public void clear() {
         service.clear();
+    }
+
+    public LiveData<Integer> getLvdServerErrorLog() {
+        return this.service.getLvdServiceError();
     }
 }

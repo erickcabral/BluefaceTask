@@ -58,6 +58,13 @@ public class Test2View extends Fragment implements View.OnClickListener {
             @Override
             public void onChanged(City city) {
                 binder.setCity(city);
+                String location = HiltApplication.getDeviceLocation();
+                String latitude = HiltApplication.getLatitude();
+                String longitude = HiltApplication.getLongitude();
+
+                vModel.setDeviceLocation(location);
+                vModel.setContLatitudeBinderModel(getResources().getString(R.string.label_latitude), latitude);
+                vModel.setContLongitudeBinderModel(getResources().getString(R.string.label_longitude), longitude);
             }
         });
 
@@ -112,11 +119,6 @@ public class Test2View extends Fragment implements View.OnClickListener {
             String name = edName.getText().toString();
             String rank = edRank.getText().toString();
             this.vModel.createCityObject(name, rank);
-
-            String location = HiltApplication.getDeviceLocation();
-            String latitude = HiltApplication.getLatitude();
-            String longitude = HiltApplication.getLongitude();
-            this.vModel.setDeviceLocation(location, latitude, longitude);
         }
     }
 

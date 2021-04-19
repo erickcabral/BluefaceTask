@@ -41,4 +41,8 @@ public class Test3ViewModel extends ViewModel {
     public void clearComp() {
         this.weatherRepository.clear();
     }
+
+    public LiveData<Integer> getLvdServerErrorLog() {
+        return this.weatherRepository.getLvdServerErrorLog();
+    }
 }

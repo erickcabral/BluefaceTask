@@ -21,7 +21,10 @@ import io.reactivex.rxjava3.schedulers.Schedulers;
 public class WeatherService {
     private static final String TAG = "<<_WEATHER_SERVICE_>>";
 
+    private static final int NOT_FOUND_ERROR = 404;
+
     private final MutableLiveData<City> lvdCityWeatherResponse = new MutableLiveData<>();
+    private final MutableLiveData<Integer> lvdServiceError = new MutableLiveData<Integer>();
 
     private final String api_key;
     private final WeatherAPI weatherAPI;
@@ -61,6 +64,11 @@ public class WeatherService {
                     @Override
                     public void onError(@NonNull Throwable e) {
                         OutputManager.logInfo(TAG, "ERROR WHEN REQUESTING WEATHER REQUEST -> " + e.getMessage());
+                        int code = 1;
+                        if (e.getMessage().contains("404")) {
+                            code = NOT_FOUND_ERROR;
+                        }
+                        lvdServiceError.postValue(code);
                     }
 
                     @Override
@@ -72,8 +80,12 @@ public class WeatherService {
 
     }
 
-    public LiveData<City> getWeatherResponse() {
+    public LiveData<City> getLvdWeatherResponse() {
         return this.lvdCityWeatherResponse;
+    }
+
+    public LiveData<Integer> getLvdServiceError() {
+        return this.lvdServiceError;
     }
 
     public void clear() {

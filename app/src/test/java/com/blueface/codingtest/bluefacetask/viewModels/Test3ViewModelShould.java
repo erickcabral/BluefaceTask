@@ -45,4 +45,10 @@ public class Test3ViewModelShould extends BaseTestUtils {
         this.viewModel.setLvdProgress(true);
         assertTrue(this.viewModel.getLvdProgress().getValue());
     }
+
+    @Test
+    public void get_service_error_live_data(){
+        this.viewModel.getLvdServerErrorLog();
+        verify(this.mckdWeatherRepository, times(1)).getLvdServerErrorLog();
+    }
 }

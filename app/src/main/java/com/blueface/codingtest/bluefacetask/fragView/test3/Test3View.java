@@ -66,6 +66,24 @@ public class Test3View extends Fragment {
                 }
             }
         });
+
+        this.vModel.getLvdServerErrorLog().observe(getViewLifecycleOwner(), new Observer<Integer>() {
+            @Override
+            public void onChanged(Integer integer) {
+                if(integer!=0){
+                    switch (integer){
+                        case 404:{
+                            OutputManager.displayDialog(getContext(), getString(R.string.alert_title_warning), getString(R.string.alert_message_city_not_found));
+                            break;
+                        }
+                        default:{
+                            OutputManager.displayDialog(getContext(), getString(R.string.alert_title_warning), getString(R.string.alert_message_something_wrong));
+                        }
+                    }
+                }
+                vModel.setLvdProgress(false);
+            }
+        });
     }
 
     private void updateLayout(City city) {
@@ -84,7 +102,7 @@ public class Test3View extends Fragment {
                 inputLayout.setError(getResources().getString(R.string.warning_invalid_field));
             } else {
                 inputLayout.setError(null);
-                this.binder.setCity(null);
+                this.clearLayout();
                 this.vModel.setLvdProgress(true);
                 this.vModel.requestWeatherInfo(cityName);
             }
@@ -93,10 +111,14 @@ public class Test3View extends Fragment {
         }
     }
 
+    private void clearLayout() {
+        this.binder.setCity(null);
+        this.binder.setDeviceLocation(null);
+    }
+
     @Override
     public void onDestroy() {
         super.onDestroy();
-
         this.vModel.clearComp();
     }
 }

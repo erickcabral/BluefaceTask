@@ -25,4 +25,10 @@
     <string name="dialog_city_info">City Name: %s\n</string>
     <string name="dialog_city_rank">City Rank: %d\n</string>
     <string name="dialog_city_temp">City Temperature: %.1f</string>
+    <string name="label_test_3">Request temperature data of the inserted city</string>
+    <string name="txt_device_position">Device Position</string>
+    <string name="label_test_2">Create City Object from City and Rank inputs.</string>
+    <string name="alert_title_warning">Waring</string>
+    <string name="alert_message_city_not_found">City not Found!</string>
+    <string name="alert_message_something_wrong">Something went wrong</string>
 </resources>

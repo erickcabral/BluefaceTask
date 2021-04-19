@@ -36,6 +36,6 @@ public class WeatherRepositoryShould extends BaseTestUtils {
     @Test
     public void get_weather_response() {
         this.repository.getLvdWeatherResponse();
-        verify(mckdService, times(1)).getWeatherResponse();
+        verify(mckdService, times(1)).getLvdWeatherResponse();
     }
 }

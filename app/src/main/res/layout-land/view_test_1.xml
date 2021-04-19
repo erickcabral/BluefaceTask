@@ -13,46 +13,49 @@
         android:fitsSystemWindows="true">
 
         <LinearLayout
-            android:id="@+id/linBlueface"
+            android:id="@+id/linearLayout4"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:gravity="center"
             android:orientation="vertical"
             app:layout_constraintBottom_toTopOf="@+id/linDataButtons"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_chainStyle="spread_inside">
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/materialTextView3"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:layout_marginTop="8dp"
+                android:layout_margin="4dp"
                 android:gravity="center"
                 android:text="Blueface Task"
-                android:textSize="36sp"
+                android:textSize="24sp"
                 android:textStyle="bold" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/materialTextView2"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="8dp"
+                android:layout_margin="4dp"
                 android:gravity="center"
                 android:text="by"
-                android:textSize="20sp"
+                android:textSize="14sp"
                 android:textStyle="bold" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/materialTextView"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="8dp"
+                android:layout_margin="4dp"
                 android:gravity="center"
                 android:text="Erick Cabral"
-                android:textSize="28sp"
+                android:textSize="18sp"
                 android:textStyle="bold" />
         </LinearLayout>
 
@@ -60,22 +63,24 @@
             android:id="@+id/linDataButtons"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="1dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="4dp"
             android:gravity="center"
             android:orientation="horizontal"
             android:weightSum="10"
             app:layout_constraintBottom_toTopOf="@+id/linTestButtons"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linBlueface">
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout4">
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnLoadGivenData"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_margin="8dp"
+                android:layout_marginHorizontal="8dp"
                 android:layout_weight="5"
                 android:backgroundTint="@android:color/holo_red_dark"
                 android:padding="16dp"
@@ -85,7 +90,7 @@
                 android:id="@+id/btnLoadFixedData"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_margin="8dp"
+                android:layout_marginHorizontal="8dp"
                 android:layout_weight="5"
                 android:backgroundTint="@android:color/holo_green_dark"
                 android:padding="16dp"
@@ -103,6 +108,7 @@
             android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/linDataButtons">
 

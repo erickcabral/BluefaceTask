@@ -9,10 +9,6 @@
         <import type="android.view.View" />
 
         <variable
-            name="enableProgress"
-            type="Boolean" />
-
-        <variable
             name="city"
             type="com.blueface.codingtest.bluefacetask.supportClasses.models.City" />
 
@@ -31,20 +27,20 @@
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/layoutTest3"
+        android:id="@+id/layoutTest2"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fitsSystemWindows="true">
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:gravity="center"
-            android:text="@string/label_test_3"
+            android:text="@string/label_test_2"
             android:textSize="22sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
@@ -54,132 +50,136 @@
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/inpCityName"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
             android:hint="@string/hint_city_name"
             app:expandedHintEnabled="true"
-            app:layout_constraintBottom_toTopOf="@+id/btnSubmit"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/linearLayout5"
+            app:layout_constraintEnd_toStartOf="@+id/inpCityRank"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView2">
+            app:layout_constraintTop_toBottomOf="@+id/textView">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/edCityName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="text" />
+                android:inputType="text"
+                tools:text="Dublin" />
         </com.google.android.material.textfield.TextInputLayout>
 
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/inpCityRank"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:gravity="center"
+            android:hint="@string/hint_city_rank"
+            app:expandedHintEnabled="true"
+            app:layout_constraintBottom_toBottomOf="@+id/inpCityName"
+            app:layout_constraintEnd_toStartOf="@+id/btnSubmit"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/inpCityName"
+            app:layout_constraintTop_toTopOf="@+id/inpCityName">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edCityRank"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:inputType="number"
+                tools:text="99" />
+        </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnSubmit"
             android:layout_width="wrap_content"
-            android:layout_height="48dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
+            android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
-            android:layout_marginBottom="8dp"
-            android:text="@string/btn_request_info"
-            app:layout_constraintBottom_toTopOf="@+id/inpCity"
+            android:text="@string/btn_submit"
+            app:layout_constraintBottom_toBottomOf="@+id/inpCityRank"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/inpCityName" />
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/inpCityRank"
+            app:layout_constraintTop_toTopOf="@+id/inpCityRank" />
 
         <LinearLayout
-            android:id="@+id/inpCity"
+            android:id="@+id/linearLayout5"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
-            android:orientation="vertical"
-            android:visibility="@{city!=null? View.VISIBLE : View.GONE}"
-            app:layout_constraintBottom_toTopOf="@+id/linearLayout7"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
+            android:orientation="horizontal"
+            android:visibility="@{city!=null?View.VISIBLE:View.GONE}"
+            android:weightSum="10"
+            app:layout_constraintBottom_toTopOf="@+id/linDevicePosition"
+            app:layout_constraintEnd_toStartOf="@+id/inpDeviceLocation"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btnSubmit"
-            tools:visibility="visible">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:padding="8dp"
-                android:weightSum="10">
-
-                <com.google.android.material.textfield.TextInputLayout
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="4dp"
-                    android:layout_weight="10"
-                    android:hint="City"
-                    app:startIconDrawable="@drawable/ic_city">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:editable="false"
-                        android:text="@{city.name}"
-                        tools:text="Paris" />
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <com.google.android.material.textfield.TextInputLayout
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="4dp"
-                    android:hint="Temp."
-                    app:startIconDrawable="@drawable/ic_temp">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:editable="false"
-                        android:text='@{String.format("%.1f",city.temperature)}'
-                        tools:text="34.5" />
-                </com.google.android.material.textfield.TextInputLayout>
-
-            </LinearLayout>
+            app:layout_constraintTop_toBottomOf="@+id/inpCityName">
 
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:hint="Device Current Location"
-                android:visibility="@{deviceLocation == null?View.GONE:View.VISIBLE}"
-                app:startIconDrawable="@drawable/ic_current_location">
+                android:layout_marginVertical="8dp"
+                android:layout_marginEnd="4dp"
+                android:layout_weight="10"
+                android:hint="City"
+                app:startIconDrawable="@drawable/ic_city">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:editable="false"
-                    android:text="@{deviceLocation}"
-                    tools:text="Dublin, Ireland" />
+                    android:text="@{city.name}"
+                    tools:text="Paris" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="8dp"
+                android:layout_marginStart="4dp"
+                android:hint="Rank"
+                app:startIconDrawable="@drawable/ic_rank">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text='@{String.format("%d",city.rank)}'
+                    tools:text="99" />
             </com.google.android.material.textfield.TextInputLayout>
 
         </LinearLayout>
 
-        <ProgressBar
-            android:id="@+id/progress"
-            style="@style/Widget.MaterialComponents.CircularProgressIndicator"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/inpDeviceLocation"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:indeterminate="true"
-            android:indeterminateOnly="true"
-            android:visibility="@{enableProgress?View.VISIBLE:View.GONE}"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginEnd="8dp"
+            android:hint="Device Current Location"
+            android:visibility="@{deviceLocation == null?View.GONE:View.VISIBLE}"
+            app:layout_constraintBottom_toBottomOf="@+id/linearLayout5"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btnSubmit"
-            tools:visibility="visible" />
+            app:layout_constraintTop_toTopOf="@+id/linearLayout5"
+            binder:startIconDrawable="@drawable/ic_current_location">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:editable="false"
+                android:text="@{deviceLocation}"
+                tools:text="Dublin, Ireland" />
+        </com.google.android.material.textfield.TextInputLayout>
 
         <LinearLayout
-            android:id="@+id/linearLayout7"
+            android:id="@+id/linDevicePosition"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -195,7 +195,6 @@
             <com.google.android.material.textview.MaterialTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="4dp"
                 android:gravity="center"
                 android:text="Device Position"
                 android:textSize="18sp"
@@ -204,7 +203,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="0dp"
+                android:layout_margin="8dp"
                 android:gravity="center"
                 android:orientation="horizontal">
 
